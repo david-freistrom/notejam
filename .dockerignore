@@ -1,2 +1,6 @@
 .gitignore
 .env.example
+cloudbuild_*
+README.md
+venv/
+**/__pychache__

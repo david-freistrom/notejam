@@ -8,10 +8,10 @@ ENV FLASK_ENV=production
 
 RUN apt-get update -y
 RUN apt-get install -y python-pip python-dev build-essential
-COPY . /app
-WORKDIR /app
+COPY . /workspace
+WORKDIR /workspace
 RUN pip install -r requirements.txt
-RUN touch /app/.env
+RUN touch /workspace/.env
 EXPOSE 5000
 ENTRYPOINT ["python"]
 CMD ["flask run"]
