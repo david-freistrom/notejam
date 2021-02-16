@@ -1,8 +1,8 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SelectField, TextAreaField
+from wtforms import StringField, PasswordField
 from wtforms.validators import Required, Email, EqualTo, ValidationError
 
-from notejam.models import User, Pad
+from ..models import User
 
 
 class SigninForm(FlaskForm):
@@ -27,29 +27,6 @@ class SignupForm(FlaskForm):
             raise ValidationError(
                 'User with this email is already signed up'
             )
-
-
-class NoteForm(FlaskForm):
-    name = StringField('Name', validators=[Required()])
-    text = TextAreaField('Note', validators=[Required()])
-    pad = SelectField('Pad', choices=[], coerce=int)
-
-    # @TODO use wtforms.ext.sqlalchemy.fields.QuerySelectField?
-    def __init__(self, user=None, **kwargs):
-        super(NoteForm, self).__init__(**kwargs)
-        self.pad.choices = [(0, '---------')] + [
-            (p.id, p.name) for p in Pad.query.filter_by(user=user)
-        ]
-
-
-class PadForm(FlaskForm):
-    name = StringField('Name', validators=[Required()])
-
-
-# dummy form
-class DeleteForm(FlaskForm):
-    pass
-
 
 class ChangePasswordForm(FlaskForm):
     old_password = PasswordField('Old Password', validators=[Required()])
@@ -82,3 +59,5 @@ class ForgotPasswordForm(FlaskForm):
             raise ValidationError(
                 'No user with given email found'
             )
+
+__all__ = [ SigninForm, SignupForm, ChangePasswordForm, ForgotPasswordForm]

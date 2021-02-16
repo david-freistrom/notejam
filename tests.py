@@ -7,13 +7,9 @@ from contextlib import contextmanager
 
 from flask import url_for
 from flask_testing import TestCase
+from app import create_app
 
-from notejam import app, db
-from notejam.config import TestingConfig
-from notejam.models import User, Pad, Note
-
-app.config.from_object(TestingConfig)
-
+from app.models import User, Pad, Note, db
 
 class NotejamBaseTestCase(TestCase):
     def setUp(self):
@@ -319,18 +315,20 @@ class NoteTestCase(NotejamBaseTestCase):
 
 @contextmanager
 def signed_in_user(user):
-    '''
-    Signed in user context
-    Usage:
-        user = get_user()
-        with signed_in_user(user) as c:
-            response = c.get(...)
-    '''
-    with app.test_client() as c:
-        with c.session_transaction() as sess:
-            sess['user_id'] = user.id
-            sess['_fresh'] = True
-        yield c
+  '''
+  Signed in user context
+  Usage:
+      user = get_user()
+      with signed_in_user(user) as c:
+          response = c.get(...)
+  '''
+
+  with app.test_client() as c:
+      with c.session_transaction() as sess:
+          sess['user_id'] = user.id
+          sess['_fresh'] = True
+      yield c
 
 if __name__ == '__main__':
+    app = create_app()
     unittest.main()

@@ -1,0 +1,9 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'build', '-t', 'notejam:dev', '.' ]
+  - name: 'notejam:dev'
+    args: ['tests.py']
+    env: 
+      - 'FLASK_ENV=testing'
+images:
+  - 'notejam:dev'
