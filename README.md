@@ -25,7 +25,7 @@ $ pip3 install -r requirements.txt
 
 Build and test locally
 ```bash
-$ cloud-build-local --config=cloudbuild_dev.yaml --dryrun=false .
+$ cloud-build-local --substitutions 'BRANCH_NAME=dev' --config=cloudbuild_dev.yaml --dryrun=false .
 ```
 
 Build docker image locally
