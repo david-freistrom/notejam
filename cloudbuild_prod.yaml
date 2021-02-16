@@ -7,6 +7,7 @@ steps:
     args: ['tests.py']
     env: 
       - 'FLASK_ENV=testing'
+    entrypoint: python
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
       - 'run'

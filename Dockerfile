@@ -13,5 +13,4 @@ WORKDIR /workspace
 RUN pip install -r requirements.txt
 RUN touch /workspace/.env
 EXPOSE 5000
-ENTRYPOINT ["python"]
-CMD ["flask run"]
+ENTRYPOINT ["flask", "run"]
