@@ -16,7 +16,6 @@ steps:
       - 'us-central1'
       - '--platform'
       - 'managed'
-      - '--allow-unauthenticated'
       - '--vpc-connector' 
       - 'notejam-db-connector'
     env:

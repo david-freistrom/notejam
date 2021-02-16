@@ -1,9 +1,9 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'build', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/notejam/notejam:$COMMIT_SHA', '.' ]
+    args: [ 'build', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/notejam/notejam:$TAG_NAME', '.' ]
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'push', 'us-central1-docker.pkg.dev/$PROJECT_ID/notejam/notejam:$COMMIT_SHA']
-  - name: 'us-central1-docker.pkg.dev/$PROJECT_ID/notejam/notejam:$COMMIT_SHA'
+    args: [ 'push', 'us-central1-docker.pkg.dev/$PROJECT_ID/notejam/notejam:$TAG_NAME']
+  - name: 'us-central1-docker.pkg.dev/$PROJECT_ID/notejam/notejam:$TAG_NAME'
     args: ['tests.py']
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
@@ -11,7 +11,7 @@ steps:
       - 'deploy'
       - 'notejam'
       - '--image'
-      - 'us-central1-docker.pkg.dev/$PROJECT_ID/notejam/notejam:$COMMIT_SHA'
+      - 'us-central1-docker.pkg.dev/$PROJECT_ID/notejam/notejam:$TAG_NAME'
       - '--region'
       - 'us-central1'
       - '--platform'
@@ -22,4 +22,4 @@ steps:
     env:
       - 'PORT=5000'
 images:
-  - 'us-central1-docker.pkg.dev/$PROJECT_ID/notejam/notejam:$COMMIT_SHA'
+  - 'us-central1-docker.pkg.dev/$PROJECT_ID/notejam/notejam:$TAG_NAME'
