@@ -20,5 +20,6 @@ steps:
       - 'notejam-db-connector'
     env:
       - 'PORT=5000'
+      - 'FLASK_ENV=testing'
 images:
   - 'us-central1-docker.pkg.dev/$PROJECT_ID/notejam/notejam:$COMMIT_SHA'
