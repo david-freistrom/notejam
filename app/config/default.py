@@ -3,7 +3,9 @@ import logging
 
 class Config(object):
     DEBUG = False
-    TESTING = False # Database Configuration for PostgreSQL
+    TESTING = False 
+
+    # Database Configuration for PostgreSQL
     POSTGRES_URL = os.getenv("POSTGRES_URL", 'localhost:5432')
     POSTGRES_USER = os.getenv("POSTGRES_USER", 'notejam')
     POSTGRES_PW = os.getenv("POSTGRES_PW", 'password1234!')
@@ -18,23 +20,12 @@ class Config(object):
     
     # Logging Configurtion
     LOGGING_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-    LOGGING_LOCATION = '/dev/stdout'
+    LOGGING_LOCATION = 'notejam.log'
     LOGGING_LEVEL = logging.DEBUG
 
-    # # Mailer Configuration
-    # MAIL_SERVER = 'localhost'
-    # MAIL_PORT = 25
-    # MAIL_USE_TLS = False
-    # MAIL_USE_SSL = False
-    # MAIL_USERNAME = None
-    # MAIL_PASSWORD = None
-    # MAIL_DEFAULT_SENDER = None
-
     # Mailer Configuration
-    MAIL_SERVER = 'mail.freistrom.io'
-    MAIL_PORT = 465
+    MAIL_SERVER = 'localhost'
+    MAIL_PORT = 1025
     MAIL_USE_TLS = False
-    MAIL_USE_SSL = True
-    MAIL_USERNAME = os.getenv("MAIL_USER", 'notejam@freistrom.io')
-    MAIL_PASSWORD = os.getenv("MAIL_PW", 'mZ-Rj7A3Vj@-')
-    MAIL_DEFAULT_SENDER = 'notejam@freistrom.io'
+    MAIL_USE_SSL = False
+    MAIL_DEFAULT_SENDER = 'notejam@localhost'

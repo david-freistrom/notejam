@@ -4,9 +4,10 @@ import logging
 class Config(object):
     DEVELOPMENT = True
     DEBUG = True
+    
     POSTGRES_URL = os.getenv("POSTGRES_URL", 'localhost:5432')
     POSTGRES_USER = os.getenv("POSTGRES_USER", 'notejam')
-    POSTGRES_PW = os.getenv("POSTGRES_PW", '')
+    POSTGRES_PW = os.getenv("POSTGRES_PW", 'password1234!')
     POSTGRES_DB = os.getenv("POSTGRES_DB", 'notejam-db')
 
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://{user}:{pw}@{url}/{db}'.format(user=POSTGRES_USER,pw=POSTGRES_PW,url=POSTGRES_URL,db=POSTGRES_DB)

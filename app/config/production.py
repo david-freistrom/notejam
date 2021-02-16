@@ -16,8 +16,8 @@ class Config(object):
     
     # Logging Configurtion
     LOGGING_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-    LOGGING_LOCATION = '/dev/stdout'
-    LOGGING_LEVEL = logging.DEBUG
+    LOGGING_LOCATION = 'notejam.log'
+    LOGGING_LEVEL = logging.INFO
     
     SECURITY_PASSWORD_SALT = 'CHANGE_ME'
 
