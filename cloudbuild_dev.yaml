@@ -1,9 +1,9 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'build', '-t', 'notejam:$BRANCH_NAME', '.' ]
-  - name: 'notejam:$BRANCH_NAME'
+    args: [ 'build', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/notejam/notejam:$BRANCH_NAME', '.' ]
+  - name: 'us-central1-docker.pkg.dev/$PROJECT_ID/notejam/notejam:$BRANCH_NAME'
     args: ['tests.py']
     env: 
       - 'FLASK_ENV=testing'
 images:
-  - 'notejam:$BRANCH_NAME'
+  - 'us-central1-docker.pkg.dev/$PROJECT_ID/notejam/notejam:$BRANCH_NAME'
