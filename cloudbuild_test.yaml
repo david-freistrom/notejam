@@ -5,8 +5,6 @@ steps:
     args: [ 'push', 'us-central1-docker.pkg.dev/$PROJECT_ID/notejam/notejam:$COMMIT_SHA']
   - name: 'us-central1-docker.pkg.dev/$PROJECT_ID/notejam/notejam:$COMMIT_SHA'
     args: ['tests.py']
-    env: 
-      - 'FLASK_ENV=testing'
     entrypoint: python
   - name: 'gcr.io/cloud-builders/gcloud'
     args:

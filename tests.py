@@ -7,13 +7,15 @@ from contextlib import contextmanager
 
 from flask import url_for
 from flask_testing import TestCase
-from app import create_app
 
 from app.models import User, Pad, Note, db
+from app import app, create_app
+
+import pdb
 
 class NotejamBaseTestCase(TestCase):
-    def setUp(self):
-        db.create_all()
+    # def setUp(self):
+    #     db.create_all()
 
     def tearDown(self):
         db.session.remove()
@@ -23,10 +25,9 @@ class NotejamBaseTestCase(TestCase):
 
     def create_app(self):
         self.fd, self.db = tempfile.mkstemp()
-        test_app = app
-        test_app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///" + self.db
-        test_app.config['TESTING'] = True
-        test_app.config['CSRF_ENABLED'] = False
+        os.environ['SQLALCHEMY_DATABASE_URI'] = "sqlite:///" + self.db
+        os.environ["FLASK_ENV"] = 'testing'
+        test_app = create_app()
         return test_app
 
     def create_user(self, **kwargs):
@@ -322,7 +323,6 @@ def signed_in_user(user):
       with signed_in_user(user) as c:
           response = c.get(...)
   '''
-
   with app.test_client() as c:
       with c.session_transaction() as sess:
           sess['user_id'] = user.id
@@ -330,5 +330,4 @@ def signed_in_user(user):
       yield c
 
 if __name__ == '__main__':
-    app = create_app()
-    unittest.main()
+  unittest.main()

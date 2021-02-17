@@ -11,6 +11,5 @@ RUN apt-get install -y python-pip python-dev build-essential
 COPY . /workspace
 WORKDIR /workspace
 RUN pip install -r requirements.txt
-RUN touch /workspace/.env
 EXPOSE 5000
 ENTRYPOINT ["flask", "run"]

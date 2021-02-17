@@ -4,7 +4,8 @@ from flask_dotenv import DotEnv
 
 def init_app(app):
   print("app.config.__init__.init_app()") 
-  app.config.from_object("app.config." + os.getenv('FLASK_ENV', 'default') + ".Config")
+  app.config.from_object("app.config.config." + os.getenv('FLASK_ENV', 'production').capitalize() + "Config")
+  
   DotEnv().init_app(app, verbose_mode=True)
 
   # Configure logging
