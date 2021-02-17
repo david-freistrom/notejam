@@ -1,13 +1,14 @@
 import os
 from pathlib import Path
 import logging
+import pdb
 
 class Config(object):
     DEBUG = False
     TESTING = False
     
     SECRET_KEY = 'notejam-flask-secret-key'
-    WTF_CSRF_ENABLED = True
+    WTF_CSRF_ENABLED = os.getenv('WTF_CSRF_ENABLED', True)
     CSRF_SESSION_KEY = 'notejam-flask-secret-key'
 
     # Logging Configurtion
@@ -22,33 +23,29 @@ class Config(object):
 
     # Mailer Configuration
     MAIL_SERVER = 'localhost'
-    MAIL_PORT = 1025
+    MAIL_PORT = 25
     MAIL_USE_TLS = False
     MAIL_USE_SSL = False
     MAIL_DEFAULT_SENDER = 'notejam@localhost'
+    MAIL_USERNAME = os.getenv("MAIL_USER", 'notejam@localhost')
+    MAIL_PASSWORD = os.getenv("MAIL_PW", 'password1234!')
 
 
 class DevelopmentConfig(Config):
     DEVELOPMENT = True
     DEBUG = True
-
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://{user}:{pw}@{url}/{db}'.format(user=POSTGRES_USER,pw=POSTGRES_PW,url=POSTGRES_URL,db=POSTGRES_DB)
     
-class ProductionConfig(Config):
-
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://{user}:{pw}@{url}/{db}'.format(user=POSTGRES_USER,pw=POSTGRES_PW,url=POSTGRES_URL,db=POSTGRES_DB)
-        
+class ProductionConfig(Config):        
     # Mailer Configuration
     MAIL_SERVER = 'mail.freistrom.io'
     MAIL_PORT = 465
     MAIL_USE_TLS = True
     MAIL_USE_SSL = True
-    MAIL_USERNAME = os.getenv("MAIL_USER", 'notejam@freistrom.io')
-    MAIL_PASSWORD = os.getenv("MAIL_PW", 'mZ-Rj7A3Vj@-')
-    MAIL_DEFAULT_SENDER = 'notejam@freistrom.io'
-
+    
 class TestingConfig(Config):
     TESTING = True
-    WTF_CSRF_ENABLED = False
 
-    SQLALCHEMY_DATABASE_URI = os.getenv('SQLALCHEMY_DATABASE_URI', 'postgresql+psycopg2://{user}:{pw}@{url}/{db}'.format(user=POSTGRES_USER,pw=POSTGRES_PW,url=POSTGRES_URL,db=POSTGRES_DB)
+    MAIL_SERVER = 'mail.freistrom.io'
+    MAIL_PORT = 465
+    MAIL_USE_TLS = True
+    MAIL_USE_SSL = True

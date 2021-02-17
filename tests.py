@@ -28,6 +28,9 @@ class NotejamBaseTestCase(TestCase):
         os.environ['SQLALCHEMY_DATABASE_URI'] = "sqlite:///" + self.db
         os.environ["FLASK_ENV"] = 'testing'
         test_app = create_app()
+        test_app.config['WTF_CSRF_ENABLED'] = False
+        test_app.config['CSRF_ENABLED'] = False
+        
         return test_app
 
     def create_user(self, **kwargs):
