@@ -45,7 +45,7 @@ class ProductionConfig(Config):
 class TestingConfig(Config):
     TESTING = True
     LOGGING_LEVEL = logging.DEBUG
-    DEBUG = True
+    DEBUG = False
 
     MAIL_SERVER = 'mail.freistrom.io'
     MAIL_PORT = 465

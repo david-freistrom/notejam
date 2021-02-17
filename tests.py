@@ -11,11 +11,9 @@ from flask_testing import TestCase
 from app.models import User, Pad, Note, db
 from app import app, create_app
 
-import pdb
-
 class NotejamBaseTestCase(TestCase):
-    # def setUp(self):
-    #     db.create_all()
+    def setUp(self):
+        db.create_all()
 
     def tearDown(self):
         db.session.remove()
@@ -30,7 +28,7 @@ class NotejamBaseTestCase(TestCase):
         test_app = create_app()
         test_app.config['WTF_CSRF_ENABLED'] = False
         test_app.config['CSRF_ENABLED'] = False
-        
+
         return test_app
 
     def create_user(self, **kwargs):
