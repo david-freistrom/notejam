@@ -8,6 +8,7 @@ from . import views
 from . import forms
 
 import logging
+import pdb
 
 mail = Mail()
 app = Flask(__name__, instance_relative_config=True)

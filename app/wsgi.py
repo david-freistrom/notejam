@@ -1,7 +1,7 @@
-from . import app as application
-from .config import ProductionConfig
+# from . import app as application
+# from .config import ProductionConfig
 
-application.config.from_object(ProductionConfig)
+# application.config.from_object(ProductionConfig)
 
-if __name__ == '__main__':
-   application.run()
+# if __name__ == '__main__':
+#    application.run()
