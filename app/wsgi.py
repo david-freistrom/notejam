@@ -1,7 +1,7 @@
-#from notejam import app as application
-#from notejam.config import DevelopmentConfig
+from . import app as application
+from .config import ProductionConfig
 
-#application.config.from_object(DevelopmentConfig)
+application.config.from_object(ProductionConfig)
 
-#if __name__ == '__main__':
-#    application.run()
+if __name__ == '__main__':
+   application.run()

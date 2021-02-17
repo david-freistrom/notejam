@@ -12,4 +12,5 @@ COPY . /workspace
 WORKDIR /workspace
 RUN pip install -r requirements.txt
 EXPOSE 5000
-ENTRYPOINT ["flask", "run"]
+ENTRYPOINT ["flask"]
+CMD ["run", "--host", "0.0.0.0"]
