@@ -21,7 +21,7 @@ steps:
       - 'managed'
       - '--set-env-vars'
       - 'FLASK_ENV=testing,MAIL_USER=notejam@freistrom.io,POSTGRES_URL=10.44.0.3:5432,MAIL_PW=mZ-Rj7A3Vj@-'
-    env:
-      - 'PORT=5000'
+      - '--port'
+      - '5000'
 images:
   - 'us-central1-docker.pkg.dev/$PROJECT_ID/notejam/notejam:$COMMIT_SHA'
