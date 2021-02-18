@@ -26,6 +26,7 @@ steps:
       - notejam-db-connector
       - --set-env-vars
       - "FLASK_ENV=testing,MAIL_USER=notejam@freistrom.io,POSTGRES_URL=10.44.0.3:5432,POSTGRES_DB=notejam-test-db"
+      - --set-secrets=[POSTGRES_PW=password123!]
       - --port
       - '5000'
 availableSecrets:
