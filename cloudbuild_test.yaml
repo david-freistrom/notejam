@@ -22,12 +22,8 @@ steps:
       - '--vpc-connector' 
       - 'notejam-db-connector'
       - '--set-env-vars'
-      - 'FLASK_ENV=testing,MAIL_USER=notejam@freistrom.io,POSTGRES_URL=10.44.0.3:5432,MAIL_PW=mZ-Rj7A3Vj@-,FLASK_APP="app:create_app()"'
+      - 'FLASK_ENV=testing,MAIL_USER=notejam@freistrom.io,POSTGRES_URL=10.44.0.3:5432,MAIL_PW=mZ-Rj7A3Vj@-'
     env:
       - 'PORT=5000'
-      - 'FLASK_ENV=testing'
-      - 'MAIL_USER=notejam@freistrom.io'
-      - 'MAIL_PW=mZ-Rj7A3Vj@-'
-      - 'POSTGRES_URL=10.44.0.3:5432'
 images:
   - 'us-central1-docker.pkg.dev/$PROJECT_ID/notejam/notejam:$COMMIT_SHA'
