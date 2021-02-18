@@ -27,9 +27,9 @@ steps:
       - '5000'
 availableSecrets:
   secretManager:
-  - versionName: projects/PROJECT_ID/secrets/POSTGRES_PW/versions/latest
+  - versionName: projects/419101208491/secrets/POSTGRES_PW/versions/latest
     env: POSTGRES_PW
-  - versionName: projects/PROJECT_ID/secrets/MAIL_PW/versions/latest
+  - versionName: projects/419101208491/secrets/MAIL_PW/versions/latest
     env: MAIL_PW
 images:
   - 'us-central1-docker.pkg.dev/$PROJECT_ID/notejam/notejam:$TAG_NAME'
