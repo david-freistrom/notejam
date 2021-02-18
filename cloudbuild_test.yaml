@@ -11,7 +11,7 @@ steps:
     entrypoint: python
   - name: 'gcr.io/cloud-builders/gcloud'
     id: Deploy Flask app into test env
-    secretEnv: ['POSTGRES_PASSD', 'MAIL_PASSWD']
+    secretEnv: ['POSTGRES_PASSWD', 'MAIL_PASSWD']
     args:
       - run
       - deploy
