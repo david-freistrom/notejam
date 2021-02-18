@@ -26,9 +26,9 @@ steps:
       - '5000'
 availableSecrets:
   secretManager:
-  - versionName: projects/nordcloud-304401/secrets/POSTGRES_PW/versions/3 
+  - versionName: projects/nordcloud-304401/secrets/POSTGRES_PW/versions/latest
     env: POSTGRES_PW
-  - versionName: projects/nordcloud-304401/secrets/MAIL_PW/versions/1
+  - versionName: projects/nordcloud-304401/secrets/MAIL_PW/versions/latest
     env: MAIL_PW
 images:
   - 'us-central1-docker.pkg.dev/$PROJECT_ID/notejam/notejam:$COMMIT_SHA'
