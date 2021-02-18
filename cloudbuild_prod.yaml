@@ -16,7 +16,7 @@ steps:
     args:
       - -c
       - "glcoud run deploy notejam \\"
-      - "--image us-central1-docker.pkg.dev/$PROJECT_ID/notejam/notejam:$TAG_NAME \\"
+      - "--image 'us-central1-docker.pkg.dev/$PROJECT_ID/notejam/notejam:$TAG_NAME' \\"
       - "--region us-central1 --platform managed --allow-unauthenticated --vpc-connector notejam-db-connector --port 5000 \\"
       - "--set-env-vars FLASK_ENV=production,POSTGRES_PWD=$$POSTGRES_PWD,MAIL_USER=notejam@freistrom.io,POSTGRES_URL=10.44.0.3:5432,MAIL_PWDS=$$MAIL_PWD"
 availableSecrets:

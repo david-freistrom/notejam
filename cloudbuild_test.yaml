@@ -16,7 +16,7 @@ steps:
     args:
       - -c
       - "gcloud run deploy notejam-test \\" 
-      - "--image us-central1-docker.pkg.dev/$PROJECT_ID/notejam/notejam:$COMMIT_SHA \\" 
+      - "--image 'us-central1-docker.pkg.dev/$PROJECT_ID/notejam/notejam:$COMMIT_SHA' \\" 
       - "--region us-central1 --platform managed --vpc-connector notejam-db-connector --port 5000 \\" 
       - "--set-env-vars FLASK_ENV=testing,MAIL_USER=notejam@freistrom.io,POSTGRES_URL=10.44.0.3:5432,POSTGRES_DB=notejam-test-db,POSTGRES_PWD=$$POSTGRES_PWD,MAIL_PW=$$MAIL_PWD"
 availableSecrets:
