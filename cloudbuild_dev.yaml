@@ -2,7 +2,7 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: [ 'build', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/notejam/notejam:$BRANCH_NAME', '.' ]
   - name: 'us-central1-docker.pkg.dev/$PROJECT_ID/notejam/notejam:$BRANCH_NAME'
-    args: ['tests.py', "--ignore-dotenv"]
+    args: ['tests.py']
     entrypoint: python
 images:
   - 'us-central1-docker.pkg.dev/$PROJECT_ID/notejam/notejam:$BRANCH_NAME'

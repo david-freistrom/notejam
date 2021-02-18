@@ -4,7 +4,7 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: [ 'push', 'us-central1-docker.pkg.dev/$PROJECT_ID/notejam/notejam:$TAG_NAME']
   - name: 'us-central1-docker.pkg.dev/$PROJECT_ID/notejam/notejam:$TAG_NAME'
-    args: ['tests.py', "--ignore-dotenv"]
+    args: ['tests.py']
     entrypoint: python
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
