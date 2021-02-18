@@ -11,7 +11,7 @@ steps:
     entrypoint: python
   - name: 'gcr.io/cloud-builders/gcloud'
     id: Deploy Flask app into prod env
-    secretEnv: ['POSTGRES_PW', 'MAIL_PW']
+    secretEnv: ['POSTGRES_PWD', 'MAIL_PWD']
     args:
       - run
       - deploy
@@ -26,14 +26,14 @@ steps:
       - --vpc-connector
       - notejam-db-connector
       - --set-env-vars
-      - "FLASK_ENV=production,POSTGRES_PW=password123!,MAIL_USER=notejam@freistrom.io,POSTGRES_URL=10.44.0.3:5432,MAIL_PW=$$MAIL_PW"
+      - "FLASK_ENV=production,POSTGRES_PWD=password123!,MAIL_USER=notejam@freistrom.io,POSTGRES_URL=10.44.0.3:5432,MAIL_PWDS=$$MAIL_PWD"
       - --port
       - '5000'
 availableSecrets:
   secretManager:
-  - versionName: projects/419101208491/secrets/POSTGRES_PW/versions/latest
-    env: POSTGRES_PW
-  - versionName: projects/419101208491/secrets/MAIL_PW/versions/latest
-    env: MAIL_PW
+  - versionName: projects/419101208491/secrets/POSTGRES_PWD/versions/latest
+    env: POSTGRES_PWD
+  - versionName: projects/419101208491/secrets/MAIL_PWD/versions/latest
+    env: MAIL_PWD
 images:
   - 'us-central1-docker.pkg.dev/$PROJECT_ID/notejam/notejam:$TAG_NAME'

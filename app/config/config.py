@@ -18,10 +18,10 @@ class Config(object):
 
     POSTGRES_URL = os.getenv("POSTGRES_URL", 'localhost:5432')
     POSTGRES_USER = os.getenv("POSTGRES_USER", 'notejam')
-    POSTGRES_PW = os.getenv("POSTGRES_PW", 'password1234!')
+    POSTGRES_PWD = os.getenv("POSTGRES_PWD", 'password1234!')
     POSTGRES_DB = os.getenv("POSTGRES_DB", 'notejam-db')
 
-    SQLALCHEMY_DATABASE_URI = os.getenv('SQLALCHEMY_DATABASE_URI', 'postgresql+psycopg2://{user}:{pw}@{url}/{db}'.format(user=POSTGRES_USER,pw=POSTGRES_PW,url=POSTGRES_URL,db=POSTGRES_DB))
+    SQLALCHEMY_DATABASE_URI = os.getenv('SQLALCHEMY_DATABASE_URI', 'postgresql+psycopg2://{user}:{pw}@{url}/{db}'.format(user=POSTGRES_USER,pw=POSTGRES_PWD,url=POSTGRES_URL,db=POSTGRES_DB))
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     # Mailer Configuration
@@ -31,7 +31,7 @@ class Config(object):
     MAIL_USE_SSL = False
     MAIL_DEFAULT_SENDER = 'notejam@localhost'
     MAIL_USERNAME = os.getenv("MAIL_USER", 'notejam@localhost')
-    MAIL_PASSWORD = os.getenv("MAIL_PW", 'password1234!')
+    MAIL_PASSWORD = os.getenv("MAIL_PWD", 'password1234!')
 
 
 class DevelopmentConfig(Config):
