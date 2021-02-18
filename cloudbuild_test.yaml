@@ -7,7 +7,7 @@ steps:
     args: ['tests.py']
     entrypoint: python
   - name: 'gcr.io/cloud-builders/gcloud'
-    #secretEnv: ['POSTGRES_PW', 'MAIL_PW']
+    secretEnv: ['POSTGRES_PW', 'MAIL_PW']
     args:
       - 'run'
       - 'deploy'
