@@ -26,7 +26,7 @@ steps:
       - '5000'
 availableSecrets:
   secretManager:
-  - versionName: projects/nordcloud-304401/secrets/POSTGRES_PW/versions/1
+  - versionName: projects/nordcloud-304401/secrets/POSTGRES_PW/versions/2
     env: 'POSTGRES_PW'
   - versionName: projects/nordcloud-304401/secrets/MAIL_PW/versions/1
     env: 'MAIL_PW'
