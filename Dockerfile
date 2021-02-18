@@ -3,7 +3,8 @@ FROM python:3.7-stretch
 
 ENV POSTGRES_USER=notejam
 ENV POSTGRES_DB=notejam-db
-ENV POSTGRES_Password=password1234!
+ENV POSTGRES_PW=password1234!
+ENV POSTGRES_UTL=localhost:5432
 ENV MAIL_USER=notejam
 ENV MAIL_PW=password123!
 ENV FLASK_ENV=production
