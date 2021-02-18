@@ -8,8 +8,9 @@ from contextlib import contextmanager
 from flask import url_for
 from flask_testing import TestCase
 
-from app.models import User, Pad, Note, db
 from app import app, create_app
+from app.models import User, Pad, Note, db
+
 
 class NotejamBaseTestCase(TestCase):
     def setUp(self):
@@ -26,9 +27,8 @@ class NotejamBaseTestCase(TestCase):
         os.environ['SQLALCHEMY_DATABASE_URI'] = "sqlite:///" + self.db
         os.environ["FLASK_ENV"] = 'testing'
         test_app = create_app()
-        test_app.config['WTF_CSRF_ENABLED'] = False
         test_app.config['CSRF_ENABLED'] = False
-
+        test_app.config['WTF_CSRF_ENABLED'] = False
         return test_app
 
     def create_user(self, **kwargs):
@@ -317,18 +317,18 @@ class NoteTestCase(NotejamBaseTestCase):
 
 @contextmanager
 def signed_in_user(user):
-  '''
-  Signed in user context
-  Usage:
-      user = get_user()
-      with signed_in_user(user) as c:
-          response = c.get(...)
-  '''
-  with app.test_client() as c:
-      with c.session_transaction() as sess:
-          sess['user_id'] = user.id
-          sess['_fresh'] = True
-      yield c
+    '''
+    Signed in user context
+    Usage:
+        user = get_user()
+        with signed_in_user(user) as c:
+            response = c.get(...)
+    '''
+    with app.test_client() as c:
+        with c.session_transaction() as sess:
+            sess['user_id'] = user.id
+            sess['_fresh'] = True
+        yield c
 
 if __name__ == '__main__':
-  unittest.main()
+    unittest.main()

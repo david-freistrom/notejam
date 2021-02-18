@@ -21,6 +21,9 @@ class Config(object):
     POSTGRES_PW = os.getenv("POSTGRES_PW", 'password1234!')
     POSTGRES_DB = os.getenv("POSTGRES_DB", 'notejam-db')
 
+    SQLALCHEMY_DATABASE_URI = os.getenv('SQLALCHEMY_DATABASE_URI', 'postgresql+psycopg2://{user}:{pw}@{url}/{db}'.format(user=POSTGRES_USER,pw=POSTGRES_PW,url=POSTGRES_URL,db=POSTGRES_DB))
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+
     # Mailer Configuration
     MAIL_SERVER = 'localhost'
     MAIL_PORT = 25
