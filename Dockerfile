@@ -3,7 +3,9 @@ FROM python:3.7-stretch
 
 ENV POSTGRES_USER=notejam
 ENV POSTGRES_DB=notejam-db
-ENV POSTGRES_PASSWORD=password1234!
+ENV POSTGRES_Password=password1234!
+ENV MAIL_USER=notejam
+ENV MAIL_PW=password123!
 ENV FLASK_ENV=production
 
 RUN apt-get update -y
