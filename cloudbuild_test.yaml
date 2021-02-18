@@ -7,7 +7,7 @@ steps:
     args: ['tests.py']
     entrypoint: python
   - name: 'gcr.io/cloud-builders/gcloud'
-    secretEnv: [MAIL_PW']
+    secretEnv: ['POSTGRES_PW', 'MAIL_PW']
     args:
       - 'run'
       - 'deploy'
@@ -21,14 +21,14 @@ steps:
       - '--vpc-connector' 
       - 'notejam-db-connector'
       - '--set-env-vars'
-      - 'FLASK_ENV=testing,POSTGRES_PW=password1234!,MAIL_USER=notejam@freistrom.io,POSTGRES_URL=10.44.0.3:5432,MAIL_PW=$$MAIL_PW'
+      - 'FLASK_ENV=testing,POSTGRES_PW=$$POSTGRES_PW,MAIL_USER=notejam@freistrom.io,POSTGRES_URL=10.44.0.3:5432,MAIL_PW=$$MAIL_PW'
       - '--port'
       - '5000'
 availableSecrets:
   secretManager:
-  # - versionName: projects/PROJECT_ID/secrets/POSTGRES_PW/versions/1
-  #   env: 'POSTGRES_PW'
-  - versionName: projects/PROJECT_ID/secrets/MAIL_PW/versions/1
+  - versionName: projects/$PROJECT_ID/secrets/POSTGRES_PW/versions/1
+    env: 'POSTGRES_PW'
+  - versionName: projects/$PROJECT_ID/secrets/MAIL_PW/versions/1
     env: 'MAIL_PW'
 images:
   - 'us-central1-docker.pkg.dev/$PROJECT_ID/notejam/notejam:$COMMIT_SHA'
