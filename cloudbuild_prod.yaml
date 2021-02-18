@@ -22,7 +22,7 @@ steps:
       - '--vpc-connector' 
       - 'notejam-db-connector'
       - '--set-env-vars'
-      - 'FLASK_ENV=production,POSTGRES_PW=$$POSTGRES_PW,MAIL_USER=notejam@freistrom.io,POSTGRES_URL=10.44.0.3:5432,MAIL_PW=$$MAIL_PW'
+      - "FLASK_ENV=production,POSTGRES_PW=$$POSTGRES_PW,MAIL_USER=notejam@freistrom.io,POSTGRES_URL=10.44.0.3:5432,MAIL_PW=$$MAIL_PW"
       - '--port'
       - '5000'
 availableSecrets:
