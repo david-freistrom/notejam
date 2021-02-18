@@ -6,9 +6,6 @@ steps:
   - name: 'us-central1-docker.pkg.dev/$PROJECT_ID/notejam/notejam:$COMMIT_SHA'
     args: ['tests.py']
     entrypoint: python
-  - name: 'us-central1-docker.pkg.dev/$PROJECT_ID/notejam/notejam:$COMMIT_SHA'
-    args: ['env']
-    entrypoint: bash
   - name: 'gcr.io/cloud-builders/gcloud'
     secretEnv: ['POSTGRES_PW', 'MAIL_PW']
     args:
